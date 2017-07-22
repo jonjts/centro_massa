@@ -12,7 +12,7 @@ Rails.application.routes.draw do
       scope :pontuacoes do
         get '/' => 'api/v1/pontuacoes#index'
         scope :create do
-          post '/' => 'api/v1/usuarios#create'
+          post '/' => 'api/v1/pontuacoes#create'
         end
       end
     end

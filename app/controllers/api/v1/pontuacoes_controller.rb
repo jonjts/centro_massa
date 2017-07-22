@@ -1,5 +1,5 @@
 module Api::V1
-  class PontuacaoController < BaseController
+  class PontuacoesController < BaseController
 
     before_filter only: :create do
       unless @json.has_key?('pontuacao') &&
