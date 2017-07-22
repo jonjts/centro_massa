@@ -8,6 +8,13 @@ Rails.application.routes.draw do
           put '/' => 'api/v1/usuarios#login'
         end
       end
+
+      scope :pontuacoes do
+        get '/' => 'api/v1/pontuacoes#index'
+        scope :create do
+          post '/' => 'api/v1/usuarios#create'
+        end
+      end
     end
   end
 
