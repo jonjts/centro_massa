@@ -4,8 +4,8 @@ module Api::V1
     before_filter only: :create do
       unless @json.has_key?('pontuacao') &&
           @json['pontuacao']['pontos'] &&
-          @json['pontuacao']['fase'] &&
-          render json: "Dados para o cadastro não validos.", status: :bad_request
+          @json['pontuacao']['fase']
+        render json: 'Dados para o cadastro não validos.', status: :bad_request
       end
     end
 
@@ -14,7 +14,7 @@ module Api::V1
       unless @user.blank?
         @pontuacao = Pontuacao.new
         @pontuacao.from_json(@json['pontuacao'].to_json)
-        @pontuacao.user = @user
+        @pontuacao.usuario = @user
         unless @pontuacao.save
           render json: @pontuacao.errors.full_messages.to_sentence, status: :bad_request
           return true
