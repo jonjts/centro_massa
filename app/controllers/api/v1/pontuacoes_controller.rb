@@ -1,14 +1,6 @@
 module Api::V1
   class PontuacoesController < BaseController
 
-    before_filter only: :create do
-      unless @json.has_key?('pontuacao') &&
-          @json['pontuacao']['pontos'] &&
-          @json['pontuacao']['fase']
-        render json: 'Dados para o cadastro não validos.', status: :bad_request
-      end
-    end
-
     def create
       @user = Usuario.where(email: params[:user_email]).take
       unless @user.blank?

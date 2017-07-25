@@ -1,14 +1,6 @@
 module Api::V1
   class UsuariosController < BaseController
 
-    before_filter only: :login do
-      unless @json.has_key?('usuario') &&
-          @json['usuario']['email'] &&
-          @json['usuario']['nome'] &&
-          render json: "Dados para o cadastro não validos.", status: :bad_request
-      end
-    end
-
     def login
       @user = Usuario.where(email: @json['usuario']["email"]).take
       if @user.blank?
