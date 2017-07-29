@@ -15,6 +15,12 @@ module Api::V1
       successes_create
     end
 
+    def index
+      @pontuacoes = Pontuacao.order(fase: :desc, pontos: :desc).
+        limit(40)
+      render json: @pontuacoes.to_json(:include => :usuario), status: :success
+    end
+
     def successes_create
       render json: @pontuacao, status: :success
       return true

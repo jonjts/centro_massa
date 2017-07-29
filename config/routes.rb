@@ -14,6 +14,9 @@ Rails.application.routes.draw do
         scope :create do
           post '/' => 'api/v1/pontuacoes#create'
         end
+        scope :index do
+          get '/' => 'api/v1/pontuacoes#index'
+        end
       end
     end
   end
